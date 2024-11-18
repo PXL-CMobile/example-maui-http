@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHttp.Pages.ActorListPage"
+             Title="List of Actors from the API"
+             xmlns:vm="clr-namespace:MauiHttp.ViewModels"
+             xmlns:models="clr-namespace:MauiHttp.Models"
+             x:DataType="vm:ActorListViewModel">
+    <VerticalStackLayout>
+        <Label HorizontalOptions="Center" Text="Press the button to load a list of actors"></Label>
+        <Button Text="LOAD" Command="{Binding GetListCommand}" HorizontalOptions="Center" BackgroundColor="#007ACC" Margin="50"></Button>
+        <CollectionView ItemsSource="{Binding Actors}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Actor">
+                    <Border Margin="5" BackgroundColor="LightGray" StrokeShape="RoundRectangle 50">
+                        <StackLayout Orientation="Horizontal" Padding="10" Spacing="10">
+                            <Border StrokeShape="RoundRectangle 40">
+                                <Image Source="{Binding ProfilePictureUrl}" 
+                                       HeightRequest="80" 
+                                       WidthRequest="80" 
+                                       Aspect="AspectFill"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       />
+                            </Border>
+                            <StackLayout VerticalOptions="Center">
+                                <Label Text="{Binding LastName}" 
+                                           FontSize="16" 
+                                           FontAttributes="Bold" 
+                                           TextColor="Black" />
+                                <Label Text="{Binding FirstName}" 
+                                           FontSize="14" 
+                                           TextColor="DarkGray" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

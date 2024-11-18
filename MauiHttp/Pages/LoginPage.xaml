@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiHttp.Pages.LoginPage"
+             Title="Login Page"
+             xmlns:vm="clr-namespace:MauiHttp.ViewModels"
+             xmlns:models="clr-namespace:MauiHttp.Models"
+             x:DataType="vm:LoginViewModel">
+    <VerticalStackLayout>
+        <StackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+            <!-- Email Field -->
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email"
+                   Keyboard="Email"
+                   Text="{Binding Email}"
+                   HorizontalOptions="FillAndExpand" />
+
+            <!-- Password Field -->
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   Text="{Binding Password}"
+                   HorizontalOptions="FillAndExpand" />
+
+            <!-- Login Button -->
+            <Button Text="Login"
+                    Command="{Binding LoginCommand}"
+                    HorizontalOptions="FillAndExpand"
+                    BackgroundColor="#007ACC"
+                    TextColor="White" />
+
+        </StackLayout>
+    </VerticalStackLayout>
+</ContentPage>

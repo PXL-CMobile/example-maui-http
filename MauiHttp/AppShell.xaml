@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiHttp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiHttp"
+    xmlns:pages="clr-namespace:MauiHttp.Pages"
+    Shell.FlyoutBehavior="Disabled"
+    Title="MauiHttp">
+
+    <ShellContent
+		Shell.NavBarIsVisible="true"
+		Title="Login"
+		Icon="iconblank.png"
+		ContentTemplate="{DataTemplate pages:LoginPage}"
+		Route="Login" />
+    <ShellContent
+		Shell.NavBarIsVisible="true"
+		Title="Lijstjes tijd"
+		Icon="iconblank.png"
+		ContentTemplate="{DataTemplate pages:ActorListPage}"
+		Route="ActorList" />
+
+</Shell>
