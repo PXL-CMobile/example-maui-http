@@ -11,7 +11,6 @@ namespace MauiHttp.ViewModels
         public LoginViewModel(IHTTPService service)
         {
             _httpService = service;
-            
         }
 
         [ObservableProperty]
@@ -27,7 +26,6 @@ namespace MauiHttp.ViewModels
             if (loginSuccess)
             {
                 // Navigate! 
-                int a = 4;
                 await Shell.Current.GoToAsync("//ActorList"); 
             }
             else
