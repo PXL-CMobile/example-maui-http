@@ -5,6 +5,7 @@
              Title="Login Page"
              xmlns:vm="clr-namespace:MauiHttp.ViewModels"
              xmlns:models="clr-namespace:MauiHttp.Models"
+             Shell.FlyoutBehavior="Disabled"
              x:DataType="vm:LoginViewModel">
     <VerticalStackLayout>
         <StackLayout Padding="30" Spacing="20" VerticalOptions="Center">

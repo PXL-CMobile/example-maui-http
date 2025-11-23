@@ -10,15 +10,22 @@
 
     <ShellContent
 		Shell.NavBarIsVisible="true"
+        FlyoutItemIsVisible="False"
 		Title="Login"
 		Icon="iconblank.png"
 		ContentTemplate="{DataTemplate pages:LoginPage}"
 		Route="Login" />
     <ShellContent
 		Shell.NavBarIsVisible="true"
-		Title="Lijstjes tijd"
+		Title="All Actors"
 		Icon="iconblank.png"
 		ContentTemplate="{DataTemplate pages:ActorListPage}"
 		Route="ActorList" />
+    <ShellContent
+		Shell.NavBarIsVisible="true"
+		Title="Favorites"
+		Icon="iconblank.png"
+		ContentTemplate="{DataTemplate pages:FavoriteActorsPage}"
+		Route="FavoriteActorList" />
 
 </Shell>

@@ -6,6 +6,7 @@ namespace MauiHttp.Services
     {
         Task<ObservableCollection<Actor>> GetActors();
         Task<ObservableCollection<Actor>> GetFavoriteActors();
+        Task AddFavoriteActor(int actorId);
         Task<bool> Login(string email, string password);
     }
 }

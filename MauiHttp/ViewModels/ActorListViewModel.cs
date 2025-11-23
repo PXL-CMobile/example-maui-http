@@ -24,6 +24,22 @@ public partial class ActorListViewModel : BaseViewModel
     private async Task GetList()
     {
         Actors = await _httpService.GetActors();
+
+        var favoriteActors = await _httpService.GetFavoriteActors();
+        foreach (Actor actor in Actors)
+        {
+            if (favoriteActors.FirstOrDefault(a => a.Id == actor.Id) != null)
+            {
+                actor.IsFavorite = true;
+            }
+        }
+    }
+
+    [RelayCommand]
+    private async Task AddToFavorites(Actor actor)
+    {
+        actor.IsFavorite = true;
+        await _httpService.AddFavoriteActor(actor.Id);
     }
 
 }

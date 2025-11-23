@@ -5,37 +5,73 @@
              Title="List of Actors from the API"
              xmlns:vm="clr-namespace:MauiHttp.ViewModels"
              xmlns:models="clr-namespace:MauiHttp.Models"
+             Shell.FlyoutBehavior="Flyout"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:DataType="vm:ActorListViewModel">
-    <VerticalStackLayout>
-        <Label HorizontalOptions="Center" Text="Press the button to load a list of actors"></Label>
-        <Button Text="LOAD" Command="{Binding GetListCommand}" HorizontalOptions="Center" BackgroundColor="#007ACC" Margin="50"></Button>
-        <CollectionView ItemsSource="{Binding Actors}">
+    
+    <!--Example of a converter from the MAUI Community Toolkit:-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="TrueColor">Green</Color>
+            <Color x:Key="FalseColor">Gray</Color>
+
+            <toolkit:BoolToObjectConverter x:Key="IsFavoConverter" 
+                TrueObject="{StaticResource TrueColor}" 
+                FalseObject="{StaticResource FalseColor}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label Padding="20" Text="Press the button to load a list of actors, swipe to add to favorites"></Label>
+        <Button Grid.Row="1" Text="LOAD" Command="{Binding GetListCommand}" HorizontalOptions="Center" BackgroundColor="#007ACC" Margin="20"></Button>
+        <CollectionView Grid.Row="2" ItemsSource="{Binding Actors}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:Actor">
-                    <Border Margin="5" BackgroundColor="LightGray" StrokeShape="RoundRectangle 50">
-                        <StackLayout Orientation="Horizontal" Padding="10" Spacing="10">
-                            <Border StrokeShape="RoundRectangle 40">
-                                <Image Source="{Binding ProfilePictureUrl}" 
-                                       HeightRequest="80" 
-                                       WidthRequest="80" 
-                                       Aspect="AspectFill"
-                                       HorizontalOptions="Center"
-                                       VerticalOptions="Center"
-                                       />
-                            </Border>
-                            <StackLayout VerticalOptions="Center">
-                                <Label Text="{Binding LastName}" 
-                                           FontSize="16" 
-                                           FontAttributes="Bold" 
-                                           TextColor="Black" />
-                                <Label Text="{Binding FirstName}" 
-                                           FontSize="14" 
-                                           TextColor="DarkGray" />
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem Text="❤️"
+                                    BackgroundColor="LightGreen"
+                                    Command="{Binding 
+                                    Source={RelativeSource AncestorType={x:Type vm:ActorListViewModel}}, Path=AddToFavoritesCommand}" 
+                                           CommandParameter="{Binding .}" 
+                                    />
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Border Margin="5" 
+                            BackgroundColor="{Binding IsFavorite, 
+                                Converter={StaticResource IsFavoConverter}}" 
+                            StrokeShape="RoundRectangle 50">
+                            <StackLayout Orientation="Horizontal" Padding="10" Spacing="10" >
+                                <Border StrokeShape="RoundRectangle 40">
+                                    <Image Source="{Binding ProfilePictureUrl}" 
+                                           HeightRequest="80" 
+                                           WidthRequest="80" 
+                                           Aspect="AspectFill"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"
+                                           />
+                                </Border>
+                                <StackLayout VerticalOptions="Center">
+                                    <Label Text="{Binding LastName}" 
+                                               FontSize="16" 
+                                               FontAttributes="Bold" 
+                                               TextColor="Black" />
+                                    <Label Text="{Binding FirstName}" 
+                                               FontSize="14" 
+                                               TextColor="DarkGray" />
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                    </Border>
+                        </Border>
+                    </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

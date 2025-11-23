@@ -14,10 +14,10 @@ namespace MauiHttp.ViewModels
         }
 
         [ObservableProperty]
-        private string email;
+        private string email = "arno@example.com";
 
         [ObservableProperty]
-        private string password;
+        private string password = "DitIs33nPass";
 
         [RelayCommand]
         private async Task Login()
