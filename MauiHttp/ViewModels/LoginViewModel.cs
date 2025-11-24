@@ -14,7 +14,7 @@ namespace MauiHttp.ViewModels
         }
 
         [ObservableProperty]
-        private string email = "arno@example.com";
+        private string email = "user@example.com";
 
         [ObservableProperty]
         private string password = "DitIs33nPass";

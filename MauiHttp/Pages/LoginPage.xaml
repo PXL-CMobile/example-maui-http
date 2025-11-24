@@ -7,30 +7,27 @@
              xmlns:models="clr-namespace:MauiHttp.Models"
              Shell.FlyoutBehavior="Disabled"
              x:DataType="vm:LoginViewModel">
-    <VerticalStackLayout>
-        <StackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+    <Grid RowDefinitions="Auto,Auto,Auto" Padding="30">
 
             <!-- Email Field -->
             <Entry x:Name="EmailEntry"
                    Placeholder="Email"
                    Keyboard="Email"
                    Text="{Binding Email}"
-                   HorizontalOptions="FillAndExpand" />
+                    />
 
             <!-- Password Field -->
-            <Entry x:Name="PasswordEntry"
+            <Entry Grid.Row="1"
                    Placeholder="Password"
                    IsPassword="True"
                    Text="{Binding Password}"
-                   HorizontalOptions="FillAndExpand" />
+                    />
 
             <!-- Login Button -->
-            <Button Text="Login"
-                    Command="{Binding LoginCommand}"
-                    HorizontalOptions="FillAndExpand"
+        <Button Text="Login"
+                    Grid.Row="2"
+                    Command="{Binding LoginCommand}"  
                     BackgroundColor="#007ACC"
                     TextColor="White" />
-
-        </StackLayout>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>

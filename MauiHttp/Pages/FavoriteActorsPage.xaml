@@ -4,9 +4,9 @@
              x:Class="MauiHttp.Pages.FavoriteActorsPage"
              Title="FavoriteActorsPage"
              xmlns:vm="clr-namespace:MauiHttp.ViewModels"
-            xmlns:models="clr-namespace:MauiHttp.Models"
+             xmlns:models="clr-namespace:MauiHttp.Models"
              Shell.FlyoutBehavior="Flyout"
-            x:DataType="vm:FavoriteActorsListViewModel">
+             x:DataType="vm:FavoriteActorsListViewModel">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"></RowDefinition>
